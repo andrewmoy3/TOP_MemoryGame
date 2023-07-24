@@ -7,7 +7,7 @@ export default function Gameover({score, onClose}){
             <div className="game-over-popup">
                 <h2>Game Over</h2>
                 <p>Your score: {score}</p>
-                <button onClick={onClose}>Close</button>
+                <button onClick={onClose}>New Game</button>
             </div>
         </div>
     )
