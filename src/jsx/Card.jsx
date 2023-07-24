@@ -3,9 +3,9 @@ import load from '../assets/loading-screen-loading.gif'
 
 export default function Card(props){
 
-    // function handleClick(){
-    //     console.log(props.id  + "clicked!")
-    // }
+    const handleClick = () => {
+        props.reshuffle(props.id);
+      };
 
     const [image, setImage] = useState({img: load, name: 'loading...'})
 
@@ -21,7 +21,7 @@ export default function Card(props){
     
 
     return (
-        <div onClick={props.refreshDisplay}>
+        <div onClick={handleClick}>
             <figure>
                 <img src={image.img}  />
                 <figcaption>{image.name}</figcaption>

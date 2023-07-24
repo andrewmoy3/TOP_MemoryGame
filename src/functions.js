@@ -8,3 +8,23 @@ export function generateId(numIds, num){
     }
     return arr;
 }
+
+export function shuffleArray(array) {
+    var m = array.length, t, i;
+  
+    // Create a copy of the original array to avoid mutating the state directly
+    const newArray = [...array];
+
+    // While there remain elements to shuffle…
+    while (m) {
+      // Pick a remaining element…
+      i = Math.floor(Math.random() * m--);
+  
+      // And swap it with the current element.
+      t = newArray[m];
+      newArray[m] = newArray[i];
+      newArray[i] = t;
+    }
+  
+    return newArray;
+  }
