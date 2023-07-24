@@ -13,6 +13,7 @@ export default function Display(){
     const [score,setScore] = useState(0)
     const [answers,setAnswers] = useState([])
     const [isGameOver, setIsGameOver] = useState(false);
+    const [highScore, setHighScore] = useState(0);
 
 
     useEffect(() => {
@@ -27,6 +28,9 @@ export default function Display(){
     useEffect(() => {
         if((new Set(answers)).size !== answers.length){
             setIsGameOver(true)
+            if(highScore < score){
+                setHighScore(score)
+            }
         }else if(answers.length > 0){
             setScore(score + 1)
         }
@@ -36,7 +40,9 @@ export default function Display(){
         setScore(0);
         setAnswers([]);
         setIsGameOver(false);
-        setNumCards(4)
+        setNumCards(4);
+        setCards(generateId(4, 1010).map(id => <Card key={id} id={id} reshuffle={reshuffle} />))
+        document.getElementById('pokemonContainer').style.gridTemplateColumns = `repeat(2, 1fr)`;
       };
 
     function reshuffle(id){
@@ -46,7 +52,7 @@ export default function Display(){
 
     return (
         <>
-            <Score score={score}/>
+            <Score score={score} highScore={highScore}/>
             <div id="pokemonContainer" className="pokemonContainer">
                 {cards}
             </div>
