@@ -28,3 +28,12 @@ export function shuffleArray(array) {
   
     return newArray;
   }
+
+export function calcTotalScore(n){
+    var score = 4;
+    while(n>4){
+        score += n;
+        n = n - 2;
+    }
+    return score
+}

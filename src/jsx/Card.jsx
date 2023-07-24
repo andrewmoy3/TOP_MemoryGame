@@ -1,16 +1,16 @@
 import React, {useState, useEffect} from "react";
 import load from '../assets/loading-screen-loading.gif'
 
-export default function Card(props){
+export default function Card({id, reshuffle}){
 
     const handleClick = () => {
-        props.reshuffle(props.id);
+        reshuffle(id);
       };
 
     const [image, setImage] = useState({img: load, name: 'loading...'})
 
     useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/pokemon/' + props.id, {mode: 'cors'})
+        fetch('https://pokeapi.co/api/v2/pokemon/' + id, {mode: 'cors'})
             .then(function(response) {
                 return response.json();
             })
@@ -21,7 +21,7 @@ export default function Card(props){
     
 
     return (
-        <div onClick={handleClick}>
+        <div className='pokemon' onClick={handleClick}>
             <figure>
                 <img src={image.img}  />
                 <figcaption>{image.name}</figcaption>
